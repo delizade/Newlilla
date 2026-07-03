@@ -10,7 +10,7 @@ export default function CategoryCard({ title, image, onClick }) {
 
       {/* Inner dashed lines vector */}
       <svg className="tactile-dashed-lines" viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="49.5" fill="none" stroke="#FFFFFF" strokeWidth="0.5" strokeDasharray="1.5 2" />
+        <circle cx="50" cy="50" r="49.5" fill="none" stroke="#FFFFFF" strokeWidth="0.35" strokeDasharray="1.5 2" />
       </svg>
 
       {/* Title dark blur shadow backing */}

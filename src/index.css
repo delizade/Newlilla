@@ -624,14 +624,15 @@ h6 {
 .tactile-dashed-lines {
   box-sizing: border-box;
   position: absolute;
-  width: calc(100% - 14px);
-  height: calc(100% - 14px);
-  left: 7px;
-  top: 7px;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  left: 4px;
+  top: 4px;
   pointer-events: none;
   z-index: 2;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   transform-origin: center center;
+  opacity: 0.3; /* 70% transparent */
 }
 
 .tactile-category-circle:hover .tactile-dashed-lines {

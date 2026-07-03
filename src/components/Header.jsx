@@ -39,7 +39,7 @@ export default function Header({
           cursor: 'pointer'
         }} onClick={() => setActiveCategory('Tümü')}>
           <img 
-            src="/assets/NewLilla-logo.svg" 
+            src={`${import.meta.env.BASE_URL || '/'}assets/NewLilla-logo.svg`} 
             alt="NewLilla" 
             style={{ 
               height: '52px', 

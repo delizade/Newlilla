@@ -76,7 +76,7 @@ export default function Footer() {
           {/* Brand Info */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             <img 
-              src="/assets/NewLilla-logo.svg" 
+              src={`${import.meta.env.BASE_URL || '/'}assets/NewLilla-logo.svg`}
               alt="NewLilla" 
               style={{ 
                 height: '46px', 

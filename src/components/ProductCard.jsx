@@ -86,15 +86,19 @@ export default function ProductCard({ product, onAddToCart, onQuickView, onAddTo
       </div>
 
       {/* Image Container with Actions overlay */}
-      <div style={{
-        position: 'relative',
-        width: '100%',
-        paddingBottom: '125%', /* Premium 4:5 fashion editorial aspect ratio */
-        backgroundColor: 'var(--bg-secondary)',
-        overflow: 'hidden',
-        border: '1px solid var(--border-naive)',
-        transition: 'border-color var(--transition-normal)'
-      }}>
+      <div 
+        onClick={() => onQuickView(product)}
+        style={{
+          position: 'relative',
+          width: '100%',
+          paddingBottom: '125%', /* Premium 4:5 fashion editorial aspect ratio */
+          backgroundColor: 'var(--bg-secondary)',
+          overflow: 'hidden',
+          border: '1px solid var(--border-naive)',
+          transition: 'border-color var(--transition-normal)',
+          cursor: 'pointer'
+        }}
+      >
         <img
           src={product.image}
           alt={product.name}
