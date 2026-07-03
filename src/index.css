@@ -1708,7 +1708,7 @@ h6 {
   flex: 1.25 1 440px;
   background-color: var(--bg-secondary);
   position: relative;
-  aspect-ratio: 1.2 / 1;
+  aspect-ratio: 1 / 1; /* Fixed to 1:1 */
 }
 
 .quickview-details-col {
@@ -1726,8 +1726,8 @@ h6 {
   }
   .quickview-image-col {
     flex: 1 1 100% !important;
-    aspect-ratio: 16 / 10 !important;
-    max-height: 35vh !important;
+    aspect-ratio: 1 / 1 !important; /* Fixed to 1:1 */
+    max-height: 40vh !important;
   }
   .quickview-details-col {
     flex: 1 1 100% !important;

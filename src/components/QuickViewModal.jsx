@@ -222,13 +222,15 @@ export default function QuickViewModal({ product, onClose, onAddToCart }) {
               border: '1px solid rgba(24, 24, 27, 0.15)',
               borderRadius: '0px',
               overflow: 'hidden',
-              backgroundColor: 'var(--bg-secondary)'
+              backgroundColor: 'var(--bg-secondary)',
+              height: '48px',
+              boxSizing: 'border-box'
             }}>
               <button
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
                 style={{
                   width: '40px',
-                  height: '40px',
+                  height: '100%',
                   border: 'none',
                   background: 'none',
                   cursor: 'pointer',
@@ -248,7 +250,7 @@ export default function QuickViewModal({ product, onClose, onAddToCart }) {
                 onClick={() => setQuantity(quantity + 1)}
                 style={{
                   width: '40px',
-                  height: '40px',
+                  height: '100%',
                   border: 'none',
                   background: 'none',
                   cursor: 'pointer',
@@ -269,11 +271,11 @@ export default function QuickViewModal({ product, onClose, onAddToCart }) {
               className={selectedSize ? "btn btn-accent" : "btn"}
               style={{
                 flexGrow: 1,
-                padding: '14px 28px',
+                height: '48px',
                 borderRadius: '0px',
                 backgroundColor: !selectedSize ? 'rgba(24, 24, 27, 0.05)' : undefined,
                 color: !selectedSize ? 'var(--text-muted)' : undefined,
-                border: !selectedSize ? '1px solid rgba(24, 24, 27, 0.08)' : undefined,
+                border: '1px solid ' + (!selectedSize ? 'rgba(24, 24, 27, 0.08)' : 'transparent'),
                 cursor: !selectedSize ? 'not-allowed' : 'pointer',
                 boxShadow: !selectedSize ? 'none' : undefined,
                 fontSize: '12px',
@@ -284,7 +286,9 @@ export default function QuickViewModal({ product, onClose, onAddToCart }) {
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '8px',
-                fontFamily: 'var(--font-sans)'
+                fontFamily: 'var(--font-sans)',
+                boxSizing: 'border-box',
+                transition: 'all var(--transition-fast)'
               }}
             >
               <span>{selectedSize ? 'Sepete Ekle' : 'Lütfen Beden Seçin'}</span>
