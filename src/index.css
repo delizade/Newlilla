@@ -1692,7 +1692,7 @@ h6 {
 /* QuickViewModal Responsive Styles */
 .quickview-container {
   width: 100%;
-  max-width: 840px;
+  max-width: 980px;
   max-height: 90vh;
   border-radius: 0px;
   overflow-y: auto;
@@ -1705,19 +1705,29 @@ h6 {
 }
 
 .quickview-image-col {
-  flex: 1.25 1 440px;
+  flex: 0 0 auto;
+  width: 50%;
   background-color: var(--bg-secondary);
   position: relative;
-  aspect-ratio: 1 / 1; /* Fixed to 1:1 */
+  min-height: 200px;
+}
+
+/* 1:1 ratio via padding-bottom technique */
+.quickview-image-col::before {
+  content: '';
+  display: block;
+  padding-bottom: 100%;
 }
 
 .quickview-details-col {
-  flex: 1 1 360px;
+  flex: 1 1 0;
+  min-width: 0;
   padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: left;
+  overflow-y: auto;
 }
 
 @media (max-width: 800px) {
@@ -1725,12 +1735,16 @@ h6 {
     max-height: 85vh;
   }
   .quickview-image-col {
-    flex: 1 1 100% !important;
-    aspect-ratio: 1 / 1 !important; /* Fixed to 1:1 */
-    max-height: 40vh !important;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    min-height: 0 !important;
+  }
+  .quickview-image-col::before {
+    padding-bottom: 75% !important;
   }
   .quickview-details-col {
-    flex: 1 1 100% !important;
+    flex: 1 1 auto !important;
     padding: 24px !important;
+    overflow-y: auto;
   }
 }
