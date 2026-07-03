@@ -38,18 +38,8 @@ export default function QuickViewModal({ product, onClose, onAddToCart }) {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="liquid-glass anim-scale-in"
+        className="liquid-glass anim-scale-in quickview-container"
         style={{
-          width: '100%',
-          maxWidth: '840px',
-          borderRadius: '0px',
-          overflow: 'hidden',
-          display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          boxShadow: 'var(--shadow-lg)',
-          position: 'relative',
-          border: '1px solid rgba(24, 24, 27, 0.08)',
           backdropFilter: 'none',
           WebkitBackdropFilter: 'none'
         }}
@@ -91,12 +81,7 @@ export default function QuickViewModal({ product, onClose, onAddToCart }) {
         </button>
 
         {/* Left Column: Image */}
-        <div style={{
-          flex: '1.25 1 470px',
-          backgroundColor: 'var(--bg-secondary)',
-          position: 'relative',
-          aspectRatio: '1 / 1'
-        }}>
+        <div className="quickview-image-col">
           <img
             src={product.image}
             alt={product.name}
@@ -112,14 +97,7 @@ export default function QuickViewModal({ product, onClose, onAddToCart }) {
         </div>
 
         {/* Right Column: Details */}
-        <div style={{
-          flex: '1 1 370px',
-          padding: '40px',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          textAlign: 'left'
-        }}>
+        <div className="quickview-details-col">
           {/* Category Tag */}
           <div style={{ display: 'flex', marginBottom: '16px' }}>
             <span className="badge badge-primary" style={{ borderRadius: '0px', backgroundColor: 'var(--accent-light)', color: 'var(--accent)' }}>{product.subCategory}</span>

@@ -1688,3 +1688,49 @@ h6 {
 .plain-rect-btn:hover svg {
   transform: translateX(4px);
 }
+
+/* QuickViewModal Responsive Styles */
+.quickview-container {
+  width: 100%;
+  max-width: 840px;
+  max-height: 90vh;
+  border-radius: 0px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  border: 1px solid rgba(24, 24, 27, 0.08);
+}
+
+.quickview-image-col {
+  flex: 1.25 1 440px;
+  background-color: var(--bg-secondary);
+  position: relative;
+  aspect-ratio: 1.2 / 1;
+}
+
+.quickview-details-col {
+  flex: 1 1 360px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+@media (max-width: 800px) {
+  .quickview-container {
+    max-height: 85vh;
+  }
+  .quickview-image-col {
+    flex: 1 1 100% !important;
+    aspect-ratio: 16 / 10 !important;
+    max-height: 35vh !important;
+  }
+  .quickview-details-col {
+    flex: 1 1 100% !important;
+    padding: 24px !important;
+  }
+}
