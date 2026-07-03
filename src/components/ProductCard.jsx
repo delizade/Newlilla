@@ -47,9 +47,8 @@ export default function ProductCard({ product, onAddToCart, onQuickView, onAddTo
         <span
           className="badge badge-primary"
           style={{
-            backgroundColor: 'rgba(253, 252, 249, 0.9)',
-            backdropFilter: 'blur(8px)',
-            border: '1px solid var(--border-color)',
+          backgroundColor: 'var(--bg-primary)',
+          border: '1px solid var(--border-color)',
             fontSize: '10px',
             color: 'var(--text-primary)',
             padding: '4px 10px',
@@ -218,10 +217,9 @@ export default function ProductCard({ product, onAddToCart, onQuickView, onAddTo
           left: 0,
           width: '100%',
           padding: '16px',
-          backgroundColor: 'rgba(253, 252, 249, 0.85)',
-          backdropFilter: 'blur(16px) saturate(120%)',
-          borderTop: '1px solid rgba(24, 24, 27, 0.08)',
-          boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 -4px 20px rgba(24, 24, 27, 0.03)',
+          backgroundColor: 'var(--bg-primary)',
+          borderTop: '1px solid var(--border-color)',
+          boxShadow: '0 -4px 20px rgba(24, 24, 27, 0.06)',
           display: 'flex',
           flexDirection: 'column',
           gap: '12px',
@@ -349,13 +347,9 @@ export default function ProductCard({ product, onAddToCart, onQuickView, onAddTo
 
         {/* Product Name */}
         <h3
+          className="product-name"
           onClick={() => onQuickView(product)}
           style={{
-            fontSize: '15px',
-            fontFamily: 'var(--font-serif)',
-            fontWeight: '400',
-            lineHeight: '1.4',
-            color: 'var(--text-primary)',
             cursor: 'pointer',
             height: '42px',
             overflow: 'hidden',

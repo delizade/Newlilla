@@ -610,20 +610,7 @@ function App() {
                         <div style={{ flexGrow: 1, padding: '16px 20px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', textAlign: 'left', position: 'relative' }}>
                           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                             <span style={{ fontSize: '10px', fontWeight: '700', color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{item.catName}</span>
-                            <h4 style={{
-                              fontSize: '14px',
-                              fontWeight: '600',
-                              color: 'var(--text-primary)',
-                              margin: 0,
-                              maxWidth: '240px',
-                              display: '-webkit-box',
-                              WebkitLineClamp: 2,
-                              WebkitBoxOrient: 'vertical',
-                              overflow: 'hidden',
-                              textOverflow: 'ellipsis',
-                              lineHeight: '1.4',
-                              height: '40px'
-                            }}>{formatProductNameForTitle(prod.name)}</h4>
+                            <h4 className="editorial-row-name">{formatProductNameForTitle(prod.name)}</h4>
                             <span style={{ fontSize: '14px', fontWeight: '700', color: 'var(--primary-dark)', display: 'block', marginTop: '2px' }}>₺ {prod.price.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}</span>
                           </div>
                           <button
@@ -661,20 +648,7 @@ function App() {
                         <div style={{ flexGrow: 1, padding: '16px 20px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', textAlign: 'left', position: 'relative' }}>
                           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                             <span style={{ fontSize: '10px', fontWeight: '700', color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{nextItem.catName}</span>
-                            <h4 style={{
-                              fontSize: '14px',
-                              fontWeight: '600',
-                              color: 'var(--text-primary)',
-                              margin: 0,
-                              maxWidth: '240px',
-                              display: '-webkit-box',
-                              WebkitLineClamp: 2,
-                              WebkitBoxOrient: 'vertical',
-                              overflow: 'hidden',
-                              textOverflow: 'ellipsis',
-                              lineHeight: '1.4',
-                              height: '40px'
-                            }}>{formatProductNameForTitle(nextProd.name)}</h4>
+                            <h4 className="editorial-row-name">{formatProductNameForTitle(nextProd.name)}</h4>
                             <span style={{ fontSize: '14px', fontWeight: '700', color: 'var(--primary-dark)', display: 'block', marginTop: '2px' }}>₺ {nextProd.price.toLocaleString('tr-TR', { minimumFractionDigits: 2 })}</span>
                           </div>
                           <button
