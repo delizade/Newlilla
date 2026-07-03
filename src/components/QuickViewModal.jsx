@@ -28,8 +28,10 @@ export default function QuickViewModal({ product, onClose, onAddToCart }) {
         width: '100vw',
         height: '100vh',
         backgroundColor: 'rgba(24, 24, 27, 0.4)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
+        backdropFilter: 'blur(6px)',
+        WebkitBackdropFilter: 'blur(6px)',
+        transform: 'translateZ(0)',
+        willChange: 'backdrop-filter',
         zIndex: 1000,
         display: 'flex',
         alignItems: 'center',
@@ -51,7 +53,9 @@ export default function QuickViewModal({ product, onClose, onAddToCart }) {
           flexWrap: 'wrap',
           boxShadow: 'var(--shadow-lg)',
           position: 'relative',
-          border: '1px solid rgba(24, 24, 27, 0.08)'
+          border: '1px solid rgba(24, 24, 27, 0.08)',
+          backdropFilter: 'none',
+          WebkitBackdropFilter: 'none'
         }}
       >
         {/* Close Button */}

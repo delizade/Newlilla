@@ -60,8 +60,10 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }) {
         width: '100vw',
         height: '100vh',
         backgroundColor: 'rgba(24, 24, 27, 0.4)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
+        backdropFilter: 'blur(6px)',
+        WebkitBackdropFilter: 'blur(6px)',
+        transform: 'translateZ(0)',
+        willChange: 'backdrop-filter',
         zIndex: 2100,
         display: 'flex',
         alignItems: 'center',
@@ -81,7 +83,9 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }) {
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
-          position: 'relative'
+          position: 'relative',
+          backdropFilter: 'none',
+          WebkitBackdropFilter: 'none'
         }}
       >
         {/* Header Tabs */}
