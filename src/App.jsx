@@ -1124,6 +1124,8 @@ function App() {
       {quickViewProduct && (
         <QuickViewModal
           product={quickViewProduct}
+          allProducts={products}
+          onNavigate={setQuickViewProduct}
           onClose={() => setQuickViewProduct(null)}
           onAddToCart={handleAddToCart}
         />

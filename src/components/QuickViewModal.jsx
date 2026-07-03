@@ -1,9 +1,41 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
-export default function QuickViewModal({ product, onClose, onAddToCart }) {
+export default function QuickViewModal({ product, allProducts = [], onNavigate, onClose, onAddToCart }) {
   const [selectedColor, setSelectedColor] = useState(product?.colors?.[0] || null);
   const [selectedSize, setSelectedSize] = useState(null);
   const [quantity, setQuantity] = useState(1);
+
+  const currentIndex = allProducts.findIndex((p) => p.id === product?.id);
+  const hasPrev = currentIndex > 0;
+  const hasNext = currentIndex < allProducts.length - 1;
+
+  const goPrev = useCallback(() => {
+    if (hasPrev && onNavigate) {
+      onNavigate(allProducts[currentIndex - 1]);
+      setSelectedColor(allProducts[currentIndex - 1]?.colors?.[0] || null);
+      setSelectedSize(null);
+      setQuantity(1);
+    }
+  }, [hasPrev, currentIndex, allProducts, onNavigate]);
+
+  const goNext = useCallback(() => {
+    if (hasNext && onNavigate) {
+      onNavigate(allProducts[currentIndex + 1]);
+      setSelectedColor(allProducts[currentIndex + 1]?.colors?.[0] || null);
+      setSelectedSize(null);
+      setQuantity(1);
+    }
+  }, [hasNext, currentIndex, allProducts, onNavigate]);
+
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === 'ArrowLeft') goPrev();
+      if (e.key === 'ArrowRight') goNext();
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [goPrev, goNext, onClose]);
 
   if (!product) return null;
 
@@ -94,6 +126,115 @@ export default function QuickViewModal({ product, onClose, onAddToCart }) {
               objectFit: 'cover'
             }}
           />
+
+          {/* Prev Arrow */}
+          {hasPrev && (
+            <button
+              onClick={(e) => { e.stopPropagation(); goPrev(); }}
+              title="Önceki ürün (←)"
+              style={{
+                position: 'absolute',
+                left: '14px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(253, 252, 249, 0.88)',
+                border: '1px solid rgba(24, 24, 27, 0.10)',
+                boxShadow: '0 2px 12px rgba(24,24,27,0.10)',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 5,
+                transition: 'all 0.22s ease',
+                backdropFilter: 'none'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(253,252,249,1)';
+                e.currentTarget.style.boxShadow = '0 4px 18px rgba(24,24,27,0.16)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(253,252,249,0.88)';
+                e.currentTarget.style.boxShadow = '0 2px 12px rgba(24,24,27,0.10)';
+              }}
+            >
+              <svg width="13" height="11" viewBox="0 0 13 11" fill="none" stroke="var(--text-primary)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="12" y1="5.5" x2="1" y2="5.5" />
+                <polyline points="5 1 1 5.5 5 10" />
+              </svg>
+            </button>
+          )}
+
+          {/* Next Arrow */}
+          {hasNext && (
+            <button
+              onClick={(e) => { e.stopPropagation(); goNext(); }}
+              title="Sonraki ürün (→)"
+              style={{
+                position: 'absolute',
+                right: '14px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(253, 252, 249, 0.88)',
+                border: '1px solid rgba(24, 24, 27, 0.10)',
+                boxShadow: '0 2px 12px rgba(24,24,27,0.10)',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 5,
+                transition: 'all 0.22s ease',
+                backdropFilter: 'none'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(253,252,249,1)';
+                e.currentTarget.style.boxShadow = '0 4px 18px rgba(24,24,27,0.16)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(253,252,249,0.88)';
+                e.currentTarget.style.boxShadow = '0 2px 12px rgba(24,24,27,0.10)';
+              }}
+            >
+              <svg width="13" height="11" viewBox="0 0 13 11" fill="none" stroke="var(--text-primary)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="1" y1="5.5" x2="12" y2="5.5" />
+                <polyline points="8 1 12 5.5 8 10" />
+              </svg>
+            </button>
+          )}
+
+          {/* Product Counter */}
+          {allProducts.length > 1 && (
+            <div style={{
+              position: 'absolute',
+              bottom: '14px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              display: 'flex',
+              gap: '5px',
+              zIndex: 5
+            }}>
+              {allProducts.map((_, i) => (
+                <span
+                  key={i}
+                  onClick={(e) => { e.stopPropagation(); if (onNavigate) { onNavigate(allProducts[i]); setSelectedColor(allProducts[i]?.colors?.[0] || null); setSelectedSize(null); setQuantity(1); } }}
+                  style={{
+                    width: i === currentIndex ? '18px' : '6px',
+                    height: '6px',
+                    borderRadius: '3px',
+                    backgroundColor: i === currentIndex ? 'rgba(253,252,249,0.95)' : 'rgba(253,252,249,0.45)',
+                    transition: 'all 0.3s ease',
+                    cursor: 'pointer',
+                    display: 'block'
+                  }}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Right Column: Details */}
