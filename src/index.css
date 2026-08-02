@@ -57,12 +57,9 @@
 
   /* Layout & Shadows */
   --radius-sm: 4px;
-  /* Snug boutique corners */
-  --radius-md: 8px;
-  /* Sleek refined corners */
-  --radius-lg: 16px;
-  /* Organic smooth panels */
-  --radius-full: 9999px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+  --radius-full: 4px;
 
   --shadow-sm: 0 2px 10px rgba(24, 24, 27, 0.02);
   --shadow-md: 0 10px 30px rgba(24, 24, 27, 0.03);
@@ -356,7 +353,8 @@ h6 {
   transform: translateY(0.5px) scale(0.97);
 }
 
-/* Badges */
+/* Badges & Central Tags */
+.nl-tag,
 .badge {
   display: inline-flex;
   align-items: center;
@@ -365,7 +363,9 @@ h6 {
   text-transform: uppercase;
   letter-spacing: 1px;
   padding: 4px 10px;
-  border-radius: var(--radius-full);
+  border-radius: 4px !important;
+  border: none !important;
+  outline: none !important;
 }
 
 .badge-accent {
@@ -483,9 +483,9 @@ h6 {
   font-size: 10px;
   font-weight: 700;
   padding: 4px 10px;
-  border-radius: var(--radius-full);
+  border-radius: 4px !important;
   box-shadow: 0 2px 8px rgba(212, 175, 55, 0.25);
-  border: 1px solid rgba(212, 175, 55, 0.4);
+  border: none !important;
   animation: shimmer-gold 3s linear infinite;
   display: inline-flex;
   align-items: center;
@@ -1090,8 +1090,8 @@ h6 {
 /* Immersive Immersive Newsletter Section */
 .newsletter-immersive-banner {
   background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--primary-light) 100%);
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
+  border-top: none;
+  border-bottom: none;
   padding: 64px 0;
   position: relative;
   overflow: hidden;
@@ -1425,7 +1425,7 @@ h6 {
   position: relative;
   background: transparent !important;
   /* Replaced with crisp SVG rect fill to prevent outer spill */
-  color: rgba(24, 24, 27, 0.75) !important;
+  color: #896263 !important;
   border: none !important;
   border-radius: 0 !important;
   /* Keskin 90 derece asil köşeler (Posta pulu & kitap kapağı kontrastı) */
@@ -1434,7 +1434,7 @@ h6 {
   padding: 0 28px !important;
   /* Dikey dolgu yerine sabit yükseklik ve 28px yatay dolgu */
   font-size: 11px !important;
-  font-weight: 600 !important;
+  font-weight: 500 !important;
   letter-spacing: 2.5px !important;
   text-transform: uppercase !important;
   cursor: pointer !important;
@@ -1446,7 +1446,11 @@ h6 {
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
   overflow: visible !important;
   box-shadow: none !important;
-  font-family: var(--font-sans) !important;
+  font-family: var(--font-serif) !important;
+}
+
+.ornate-cta-btn span {
+  color: #896263 !important;
 }
 
 /* Coordinated SVG corner styles - matching thickness, color, and opacity of straight lines */
@@ -1472,7 +1476,7 @@ h6 {
 
 .ornate-cta-btn .button-border-overlay path:not(.button-bg-rect),
 .ornate-cta-btn .button-border-overlay line {
-  stroke: rgba(24, 24, 27, 0.75) !important;
+  stroke: #896263 !important;
   stroke-width: 1px !important;
   vector-effect: non-scaling-stroke !important;
   transition: stroke-width 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -1487,18 +1491,24 @@ h6 {
 /* Hover Mikro-Animasyonları */
 .ornate-cta-btn:hover {
   background: transparent !important;
-  color: #000000 !important;
+  color: #896263 !important;
 }
 
-
+.ornate-cta-btn:hover span {
+  color: #896263 !important;
+}
 
 /* Buton içindeki ok ikonu hover'da hafifçe sağa kaysın */
 .ornate-cta-btn:hover .cta-arrow {
   transform: translateX(4px);
+  stroke: #896263 !important;
+  color: #896263 !important;
 }
 
 .ornate-cta-btn .cta-arrow {
-  transition: transform 0.3s ease, color 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  stroke: #896263 !important;
+  color: #896263 !important;
+  transition: transform 0.3s ease, color 0.35s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 /* --- Premium Ornate Book-Cover Scroll CTA Button (Template B) --- */
@@ -1506,7 +1516,7 @@ h6 {
   position: relative;
   background: transparent !important;
   /* Replaced with crisp SVG rect fill to prevent outer spill */
-  color: rgba(24, 24, 27, 0.75) !important;
+  color: #896263 !important;
   border: none !important;
   border-radius: 0 !important;
   height: 50px !important;
@@ -1527,6 +1537,10 @@ h6 {
   overflow: visible !important;
   box-shadow: none !important;
   font-family: var(--font-sans) !important;
+}
+
+.ornate-scroll-btn span {
+  color: #896263 !important;
 }
 
 /* SVG corner styles - matching thickness, color, and opacity of lines */
@@ -1552,7 +1566,7 @@ h6 {
 
 .ornate-scroll-btn .button-border-overlay path:not(.button-bg-rect),
 .ornate-scroll-btn .button-border-overlay line {
-  stroke: rgba(24, 24, 27, 0.75) !important;
+  stroke: #896263 !important;
   stroke-width: 1px !important;
   vector-effect: non-scaling-stroke !important;
   transition: stroke-width 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
@@ -1567,43 +1581,43 @@ h6 {
 /* Hover Mikro-Animasyonları (Varsayılan Açık Tema) */
 .ornate-scroll-btn:hover {
   background: transparent !important;
-  color: #000000 !important;
+  color: #896263 !important;
 }
 
-
+.ornate-scroll-btn:hover span {
+  color: #896263 !important;
+}
 
 /* Ok ikonu hover animasyonu */
 .ornate-scroll-btn:hover .cta-arrow {
   transform: translateX(4px);
+  stroke: #896263 !important;
+  color: #896263 !important;
 }
 
 .ornate-scroll-btn .cta-arrow {
-  transition: transform 0.3s ease, color 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  stroke: #896263 !important;
+  color: #896263 !important;
+  transition: transform 0.3s ease, color 0.35s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-/* --- Crisp SVG & HTML Background Fills and Lines to Prevent Outer Spill --- */
+/* --- Crisp SVG Background Fills and Lines to Prevent Outer Spill --- */
 .ornate-cta-btn .button-border-overlay .button-bg-rect,
-.ornate-scroll-btn .button-border-overlay .button-bg-rect,
-.ornate-cta-btn .button-bg-main,
-.ornate-scroll-btn .button-bg-main {
-  fill: #E3C5CD !important;
-  background-color: #E3C5CD !important;
+.ornate-scroll-btn .button-border-overlay .button-bg-rect {
+  fill: #E3C5CD;
   stroke: none !important;
 }
 
 .ornate-cta-btn:hover .button-border-overlay .button-bg-rect,
-.ornate-scroll-btn:hover .button-border-overlay .button-bg-rect,
-.ornate-cta-btn:hover .button-bg-main,
-.ornate-scroll-btn:hover .button-bg-main {
-  fill: #f0dbe0 !important;
-  background-color: #f0dbe0 !important;
-  /* Premium lighter satiny rose on hover, preventing muddy dark tones */
+.ornate-scroll-btn:hover .button-border-overlay .button-bg-rect {
+  fill: #f0dbe0;
+  /* Premium lighter satiny rose on hover */
 }
 
 /* Horizontal HTML border lines styling */
 .ornate-cta-btn .button-line-horizontal,
 .ornate-scroll-btn .button-line-horizontal {
-  background-color: rgba(24, 24, 27, 0.75) !important;
+  background-color: #896263 !important;
 }
 
 /* --- Coordinated Theme Overrides for Ornate Buttons inside Dark/Gold slides --- */
@@ -1721,7 +1735,7 @@ h6 {
   /* max-width: controls total modal size. Grid cols on either side are 72px each,
      so total available for modal = viewport - 144px - 24px padding. 1100px is comfortable. */
   max-width: 1100px;
-  border-radius: 0px;
+  border-radius: 4px;
   overflow: hidden;
   display: flex;
   flex-direction: row;

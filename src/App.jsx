@@ -12,6 +12,8 @@ import FitFinderModal from './components/FitFinderModal';
 import BundleTray from './components/BundleTray';
 import LoginModal from './components/LoginModal';
 import CategoryCard from './components/CategoryCard';
+import SensorySection from './components/SensorySection';
+import { Icon } from './components/ui';
 // Helper to prevent ragged lines / orphan words (like short IDs in parenthesis) wrapping alone
 const formatProductNameForTitle = (name) => {
   if (!name) return '';
@@ -346,22 +348,12 @@ function App() {
         fontFamily: 'var(--font-sans)'
       }}>
         <span style={{ display: 'inline-flex', alignItems: 'center' }}>
-          <svg style={{ width: '13px', height: '13px', fill: 'none', stroke: 'currentColor', strokeWidth: '1.4', marginRight: '6px', display: 'inline-block', verticalAlign: 'middle' }} viewBox="0 0 24 24">
-            <rect x="3" y="8" width="18" height="4" rx="1" />
-            <path d="M12 8V4H8" />
-            <path d="M12 4h4" />
-            <path d="M7 12v7c0 .55.45 1 1 1h8c.55 0 1-.45 1-1v-7" />
-          </svg>
+          <Icon name="gift" size="small" style={{ marginRight: '6px' }} />
           Yeni Sezon Ürünlerde İlk Alışverişe Özel Sepette %10 İndirim!
         </span>
         <span style={{ display: 'inline-block', width: '4px', height: '4px', backgroundColor: 'rgba(255, 255, 255, 0.4)', borderRadius: '50%' }} />
         <span style={{ display: 'inline-flex', alignItems: 'center' }}>
-          <svg style={{ width: '15px', height: '15px', fill: 'none', stroke: 'currentColor', strokeWidth: '1.4', marginRight: '6px', display: 'inline-block', verticalAlign: 'middle' }} viewBox="0 0 24 24">
-            <rect x="1" y="3" width="15" height="13" />
-            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
-            <circle cx="5.5" cy="18.5" r="2.5" />
-            <circle cx="18.5" cy="18.5" r="2.5" />
-          </svg>
+          <Icon name="truck" size="small" style={{ marginRight: '6px' }} />
           1500 TL Üzeri Ücretsiz Kargo
         </span>
       </div>
@@ -521,10 +513,11 @@ function App() {
                         className="star-card-incele-btn"
                         style={{
                           padding: '12px 24px',
-                          fontSize: '12px',
-                          fontWeight: '600',
-                          letterSpacing: '1px',
+                          fontSize: '11px',
+                          fontWeight: '500',
+                          letterSpacing: '2.5px',
                           textTransform: 'uppercase',
+                          fontFamily: 'var(--font-serif)',
                           borderRadius: 'var(--radius-full)',
                           backgroundColor: 'rgba(255, 255, 255, 0.15)',
                           color: '#fff',
@@ -537,10 +530,7 @@ function App() {
                         }}
                       >
                         <span>İncele</span>
-                        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" style={{ transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)' }} className="star-arrow">
-                          <line x1="1" y1="5" x2="13" y2="5" />
-                          <polyline points="9 1 13 5 9 9" />
-                        </svg>
+                        <Icon name="arrow-right" size="small" className="star-arrow" style={{ transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)' }} />
                       </button>
                     </div>
                   </div>
@@ -564,10 +554,11 @@ function App() {
                         className="star-card-incele-btn"
                         style={{
                           padding: '12px 24px',
-                          fontSize: '12px',
-                          fontWeight: '600',
-                          letterSpacing: '1px',
+                          fontSize: '11px',
+                          fontWeight: '500',
+                          letterSpacing: '2.5px',
                           textTransform: 'uppercase',
+                          fontFamily: 'var(--font-serif)',
                           borderRadius: 'var(--radius-full)',
                           backgroundColor: 'rgba(255, 255, 255, 0.15)',
                           color: '#fff',
@@ -580,10 +571,7 @@ function App() {
                         }}
                       >
                         <span>İncele</span>
-                        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" style={{ transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)' }} className="star-arrow">
-                          <line x1="1" y1="5" x2="13" y2="5" />
-                          <polyline points="9 1 13 5 9 9" />
-                        </svg>
+                        <Icon name="arrow-right" size="small" className="star-arrow" style={{ transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)' }} />
                       </button>
                     </div>
                   </div>
@@ -623,7 +611,10 @@ function App() {
                               padding: 0,
                               color: 'var(--primary)',
                               fontSize: '12px',
-                              fontWeight: '600',
+                              fontWeight: '500',
+                              letterSpacing: '2.5px',
+                              textTransform: 'uppercase',
+                              fontFamily: 'var(--font-serif)',
                               cursor: 'pointer',
                               display: 'flex',
                               alignItems: 'center',
@@ -632,10 +623,7 @@ function App() {
                             }}
                           >
                             <span>İncele</span>
-                            <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" style={{ transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)' }} className="row-arrow">
-                              <line x1="1" y1="5" x2="13" y2="5" />
-                              <polyline points="9 1 13 5 9 9" />
-                            </svg>
+                            <Icon name="arrow-right" size="small" className="row-arrow" style={{ transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)' }} />
                           </button>
                         </div>
                         <div style={{ width: '152px', height: '100%', flexShrink: 0, backgroundColor: 'var(--bg-secondary)', overflow: 'hidden', position: 'relative' }}>
@@ -661,7 +649,10 @@ function App() {
                               padding: 0,
                               color: 'var(--primary)',
                               fontSize: '12px',
-                              fontWeight: '600',
+                              fontWeight: '500',
+                              letterSpacing: '2.5px',
+                              textTransform: 'uppercase',
+                              fontFamily: 'var(--font-serif)',
                               cursor: 'pointer',
                               display: 'flex',
                               alignItems: 'center',
@@ -670,10 +661,7 @@ function App() {
                             }}
                           >
                             <span>İncele</span>
-                            <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" style={{ transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)' }} className="row-arrow">
-                              <line x1="1" y1="5" x2="13" y2="5" />
-                              <polyline points="9 1 13 5 9 9" />
-                            </svg>
+                            <Icon name="arrow-right" size="small" className="row-arrow" style={{ transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)' }} />
                           </button>
                         </div>
                         <div style={{ width: '152px', height: '100%', flexShrink: 0, backgroundColor: 'var(--bg-secondary)', overflow: 'hidden', position: 'relative' }}>
@@ -912,10 +900,7 @@ function App() {
                         }}
                       >
                         <span>Tümünü Gör</span>
-                        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                          <line x1="1" y1="5" x2="13" y2="5" />
-                          <polyline points="9 1 13 5 9 9" />
-                        </svg>
+                        <Icon name="arrow-right" size="small" />
                       </button>
                     </div>
                     <div className="collection-row-grid">
@@ -979,10 +964,7 @@ function App() {
                         }}
                       >
                         <span>Tümünü Gör</span>
-                        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                          <line x1="1" y1="5" x2="13" y2="5" />
-                          <polyline points="9 1 13 5 9 9" />
-                        </svg>
+                        <Icon name="arrow-right" size="small" />
                       </button>
                     </div>
                     <div className="collection-row-grid">
@@ -1046,10 +1028,7 @@ function App() {
                         }}
                       >
                         <span>Tümünü Gör</span>
-                        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                          <line x1="1" y1="5" x2="13" y2="5" />
-                          <polyline points="9 1 13 5 9 9" />
-                        </svg>
+                        <Icon name="arrow-right" size="small" />
                       </button>
                     </div>
                     <div className="collection-row-grid">
@@ -1124,65 +1103,7 @@ function App() {
       />
 
       {/* Luxury Sensory Storytelling & Fabric Tech Section */}
-      <section className="sensory-section">
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '16px' }}>
-            <span className="serif-font" style={{ fontSize: '20px', color: 'var(--primary)', letterSpacing: '0.5px' }}>Duyusal Dokunuşlar & Premium Dokular</span>
-            <h2 style={{ fontSize: '32px', fontWeight: '700', marginTop: '6px' }}>Teninizin Hak Ettiği Lüks Konfor</h2>
-            <p style={{ fontSize: '14px', color: 'var(--text-secondary)', marginTop: '6px', maxWidth: '600px', margin: '6px auto 0 auto' }}>
-              Her iplikte ve her dikişte sadece üstün kaliteli kumaş teknolojileri kullanıyoruz.
-            </p>
-          </div>
-          <div className="sensory-grid">
-            {/* Card 1: Modal */}
-            <div className="sensory-card modal-card">
-              <div className="sensory-icon-container" style={{ backgroundColor: 'var(--accent-light)', color: 'var(--accent)' }}>
-                <svg style={{ width: '20px', height: '20px', fill: 'none', stroke: 'currentColor', strokeWidth: '1.4', strokeLinecap: 'round', strokeLinejoin: 'round' }} viewBox="0 0 24 24">
-                  <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5 1 9a7 7 0 0 1-9 9z" />
-                  <path d="M19 2L9.8 11.2" />
-                </svg>
-              </div>
-              <h3 style={{ fontSize: '17px', fontWeight: '600', color: 'var(--text-primary)' }}>Premium Modal Dokusu</h3>
-              <span style={{ fontSize: '11px', color: 'var(--accent)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: 'var(--font-sans)' }}>Kayın Ağacı Liflerinden İpeksi Yumuşaklık</span>
-              <p style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                Doğal kayın ağacı elyaflarından üretilen modal iplikler, cildinizle temas ettiği ilk andan itibaren benzersiz bir yumuşaklık hissi sunar. Nefes alabilir dokusuyla terletmez, defalarca yıkansa bile ilk günkü saten pürüzsüzlüğünü korur.
-              </p>
-            </div>
-
-            {/* Card 2: Seamless */}
-            <div className="sensory-card seamless-card">
-              <div className="sensory-icon-container" style={{ backgroundColor: 'var(--primary-light)', color: 'var(--primary)' }}>
-                <svg style={{ width: '20px', height: '20px', fill: 'none', stroke: 'currentColor', strokeWidth: '1.4', strokeLinecap: 'round', strokeLinejoin: 'round' }} viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M8 12a4 4 0 1 0 8 0 4 4 0 1 0-8 0" />
-                  <line x1="3" y1="12" x2="21" y2="12" />
-                </svg>
-              </div>
-              <h3 style={{ fontSize: '17px', fontWeight: '600', color: 'var(--text-primary)' }}>Seamless Dikişsizlik</h3>
-              <span style={{ fontSize: '11px', color: 'var(--primary)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: 'var(--font-sans)' }}>İz Yapmayan Lazer Kesim Teknolojisi</span>
-              <p style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                Sıfır dikiş ve özel lazer kesim kenar tasarımı sayesinde en dar kıyafetlerin altından bile asla iz yapmaz. Teninizi ikinci bir cilt gibi saran esnek yapısıyla hareketlerinizi kısıtlamaz, gün boyu yokmuş gibi hissettirir.
-              </p>
-            </div>
-
-            {/* Card 3: Organic Pamuk */}
-            <div className="sensory-card organic-card">
-              <div className="sensory-icon-container" style={{ backgroundColor: 'rgba(76, 175, 80, 0.08)', color: 'hsl(120, 25%, 35%)' }}>
-                <svg style={{ width: '20px', height: '20px', fill: 'none', stroke: 'currentColor', strokeWidth: '1.4', strokeLinecap: 'round', strokeLinejoin: 'round' }} viewBox="0 0 24 24">
-                  <path d="M12 22V10" />
-                  <path d="M12 10c0-3.3-2.7-6-6-6S4 6.7 4 10c0 4 4 8 8 12" />
-                  <path d="M12 10c0-3.3 2.7-6 6-6s8 2.7 8 6c0 4-4 8-8 12" />
-                </svg>
-              </div>
-              <h3 style={{ fontSize: '17px', fontWeight: '600', color: 'var(--text-primary)' }}>Saf Organik Pamuk</h3>
-              <span style={{ fontSize: '11px', color: 'hsl(120, 25%, 35%)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: 'var(--font-sans)' }}>Hassas Tenler İçin Kimyasalsız Koruma</span>
-              <p style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                Alerjen ve sert kimyasal maddeler barındırmayan, sertifikalı %100 organik pamuk dokularımız. Çocuklarımızın ve hassas ciltlerin güvenle giyebileceği, yüksek emiciliğe ve doğal hava sirkülasyonuna sahip en sahici dokunuş.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <SensorySection />
 
       {/* Immersive Customer Newsletter Banner */}
       <section className="newsletter-immersive-banner">
@@ -1255,45 +1176,62 @@ function App() {
                 }}
                 style={{
                   display: 'flex',
+                  alignItems: 'stretch',
                   gap: '8px',
                   width: '100%',
                   maxWidth: '500px',
-                  margin: '12px auto 0 auto',
-                  flexWrap: 'wrap'
+                  margin: '12px auto 0 auto'
                 }}
               >
                 <input
                   type="email"
                   placeholder="E-posta adresiniz..."
-                  className="input-field"
                   required
                   value={newsletterEmail}
                   onChange={(e) => setNewsletterEmail(e.target.value)}
                   style={{
                     flex: '1',
-                    minWidth: '240px',
-                    borderRadius: 'var(--radius-full)',
-                    padding: '14px 24px',
-                    backgroundColor: '#fff',
-                    boxShadow: 'var(--shadow-sm)'
+                    height: '46px',
+                    borderRadius: '4px',
+                    padding: '0 18px',
+                    backgroundColor: '#ffffff',
+                    border: 'none',
+                    outline: 'none',
+                    boxShadow: 'none',
+                    fontSize: '13px',
+                    fontFamily: 'var(--font-sans)',
+                    color: 'var(--text-primary)',
+                    boxSizing: 'border-box'
                   }}
                 />
                 <button
                   type="submit"
-                  className="btn btn-primary"
                   style={{
-                    borderRadius: 'var(--radius-full)',
-                    padding: '14px 32px',
+                    height: '46px',
+                    borderRadius: '4px',
+                    padding: '0 28px',
                     fontSize: '12px',
                     fontWeight: '600',
-                    boxShadow: '0 4px 12px rgba(107, 76, 126, 0.15)'
+                    backgroundColor: '#28282d',
+                    color: '#ffffff',
+                    border: 'none',
+                    outline: 'none',
+                    boxShadow: 'none',
+                    letterSpacing: '1px',
+                    textTransform: 'uppercase',
+                    cursor: 'pointer',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    boxSizing: 'border-box',
+                    transition: 'all 0.2s ease'
                   }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#18181b'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#28282d'}
                 >
-                  Kulübe Katıl
-                  <svg width="12" height="9" viewBox="0 0 14 10" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '6px' }}>
-                    <line x1="1" y1="5" x2="13" y2="5" />
-                    <polyline points="9 1 13 5 9 9" />
-                  </svg>
+                  <span>Kulübe Katıl</span>
+                  <Icon name="arrow-right" size="small" color="#ffffff" />
                 </button>
               </form>
             )}

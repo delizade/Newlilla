@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { Tag, Icon } from './ui';
 
 export default function QuickViewModal({ product, allProducts = [], onNavigate, onClose, onAddToCart }) {
   const [selectedColor, setSelectedColor] = useState(product?.colors?.[0] || null);
@@ -170,9 +171,9 @@ export default function QuickViewModal({ product, allProducts = [], onNavigate, 
           <div className="quickview-details-col">
             {/* Category */}
             <div style={{ display: 'flex', marginBottom: '12px' }}>
-              <span className="badge badge-primary" style={{ borderRadius: '0px', backgroundColor: 'var(--accent-light)', color: 'var(--accent)' }}>
+              <Tag variant="accent" size="md">
                 {product.subCategory}
-              </span>
+              </Tag>
             </div>
 
             {/* Title */}

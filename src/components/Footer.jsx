@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Icon } from './ui';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -16,15 +17,14 @@ export default function Footer() {
 
   return (
     <footer style={{
-      backgroundColor: 'var(--bg-secondary)',
-      borderTop: '1px solid rgba(24, 24, 27, 0.06)',
-      padding: '72px 0 40px 0',
-      marginTop: '80px',
-      textAlign: 'left'
+      backgroundColor: 'transparent',
+      paddingTop: '64px',
+      paddingBottom: '48px',
+      marginTop: 'auto'
     }}>
       <div className="container">
         
-        {/* Trust Badges */}
+        {/* Top Features bar */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
@@ -34,9 +34,7 @@ export default function Footer() {
           marginBottom: '48px'
         }}>
           <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-            <svg style={{ width: '28px', height: '28px', stroke: 'var(--accent)', strokeWidth: '1.4', fill: 'none', flexShrink: 0 }} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-            </svg>
+            <Icon name="shield" size="big" color="var(--accent)" />
             <div>
               <h4 style={{ fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', fontFamily: 'var(--font-sans)', color: 'var(--text-primary)' }}>256 Bit SSL</h4>
               <p style={{ fontSize: '12px', color: 'var(--text-secondary)', fontFamily: 'var(--font-sans)', marginTop: '2px' }}>Kredi kartı bilgileriniz tamamen güvendedir.</p>
@@ -44,9 +42,7 @@ export default function Footer() {
           </div>
           
           <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-            <svg style={{ width: '28px', height: '28px', stroke: 'var(--accent)', strokeWidth: '1.4', fill: 'none', flexShrink: 0 }} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124l-.09-1.428a2.25 2.25 0 00-1.096-1.879l-1.921-1.153m-1.202-3.75a1.125 1.125 0 00-1.125-1.125H9.75m4.875 4.875H9.75m0 0V9.75m0 9h.008v-.008H9.75m3.562-3.63l1.164-3.5a1.125 1.125 0 011.066-.77H18m0 0V9.75m0 0h.008v-.008H18" />
-            </svg>
+            <Icon name="truck" size="big" color="var(--accent)" />
             <div>
               <h4 style={{ fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', fontFamily: 'var(--font-sans)', color: 'var(--text-primary)' }}>Hızlı & Bedava Kargo</h4>
               <p style={{ fontSize: '12px', color: 'var(--text-secondary)', fontFamily: 'var(--font-sans)', marginTop: '2px' }}>1500 TL üzeri tüm siparişlerde kargo bedava.</p>
@@ -54,9 +50,7 @@ export default function Footer() {
           </div>
 
           <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-            <svg style={{ width: '28px', height: '28px', stroke: 'var(--accent)', strokeWidth: '1.4', fill: 'none', flexShrink: 0 }} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-            </svg>
+            <Icon name="rotate" size="big" color="var(--accent)" />
             <div>
               <h4 style={{ fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', fontFamily: 'var(--font-sans)', color: 'var(--text-primary)' }}>15 Gün İade Garantisi</h4>
               <p style={{ fontSize: '12px', color: 'var(--text-secondary)', fontFamily: 'var(--font-sans)', marginTop: '2px' }}>Kullanılmamış ürünlerde koşulsuz iade imkanı.</p>
@@ -67,108 +61,125 @@ export default function Footer() {
         {/* Links & Newsletter Grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
           gap: '40px',
           paddingBottom: '48px',
           borderBottom: '1px solid rgba(24, 24, 27, 0.06)'
         }}>
-          
           {/* Brand Info */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div>
             <img 
-              src={`${import.meta.env.BASE_URL || '/'}assets/NewLilla-logo.svg`}
+              src={`${import.meta.env.BASE_URL || '/'}assets/NewLilla-logo.svg`} 
               alt="NewLilla" 
               style={{ 
-                height: '46px', 
+                height: '36px', 
                 width: 'auto', 
-                objectFit: 'contain',
-                alignSelf: 'flex-start'
+                marginBottom: '16px',
+                display: 'block'
               }} 
             />
-            <p style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: '1.7', fontFamily: 'var(--font-sans)' }}>
-              Kadın ve çocuk iç giyim dünyasında lüks detayları, üstün kumaş kalitesini ve kusursuz konforu bir arada sunan özel perakende platformu.
+            <p style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: '1.6', fontFamily: 'var(--font-sans)' }}>
+              Teninizle Uyumlu Lüks Lingerie & Ev Giyimi. Yüksek kaliteli modal ve dikişsiz dokularla tasarlanmış zamansız koleksiyonlar.
             </p>
           </div>
 
-          {/* Kurumsal */}
+          {/* Quick Links */}
           <div>
-            <h4 style={{ fontSize: '12px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '20px', fontFamily: 'var(--font-sans)', color: 'var(--text-primary)' }}>
-              Kurumsal
-            </h4>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13px', fontFamily: 'var(--font-sans)' }}>
-              <li><a href="#" style={{ color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} onMouseEnter={(e) => e.target.style.color = 'var(--text-primary)'} onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}>Hakkımızda</a></li>
-              <li><a href="#" style={{ color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} onMouseEnter={(e) => e.target.style.color = 'var(--text-primary)'} onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}>Markalarımız</a></li>
-              <li><a href="#" style={{ color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} onMouseEnter={(e) => e.target.style.color = 'var(--text-primary)'} onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}>Blog & Haberler</a></li>
-              <li><a href="#" style={{ color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} onMouseEnter={(e) => e.target.style.color = 'var(--text-primary)'} onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}>Müşteri İlişkileri</a></li>
+            <h4 style={{ fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '16px', fontFamily: 'var(--font-sans)', color: 'var(--text-primary)' }}>Kategoriler</h4>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13px', color: 'var(--text-secondary)', fontFamily: 'var(--font-sans)' }}>
+              <li><a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>Kadın Sütyen & Büstiyer</a></li>
+              <li><a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>Seamless Dikişsiz Külot</a></li>
+              <li><a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>Erkek Modal Boxer</a></li>
+              <li><a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>Çocuk Organik İç Giyim</a></li>
+              <li><a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>Saten Ev Giyimi</a></li>
             </ul>
           </div>
 
-          {/* Politikalar */}
+          {/* Customer Service */}
           <div>
-            <h4 style={{ fontSize: '12px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '20px', fontFamily: 'var(--font-sans)', color: 'var(--text-primary)' }}>
-              Sözleşmeler
-            </h4>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13px', fontFamily: 'var(--font-sans)' }}>
-              <li><a href="#" style={{ color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} onMouseEnter={(e) => e.target.style.color = 'var(--text-primary)'} onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}>Gizlilik Politikası</a></li>
-              <li><a href="#" style={{ color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} onMouseEnter={(e) => e.target.style.color = 'var(--text-primary)'} onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}>Mesafeli Satış Sözleşmesi</a></li>
-              <li><a href="#" style={{ color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} onMouseEnter={(e) => e.target.style.color = 'var(--text-primary)'} onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}>İade ve İptal Koşulları</a></li>
-              <li><a href="#" style={{ color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color var(--transition-fast)' }} onMouseEnter={(e) => e.target.style.color = 'var(--text-primary)'} onMouseLeave={(e) => e.target.style.color = 'var(--text-secondary)'}>KVKK Bilgilendirme</a></li>
+            <h4 style={{ fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '16px', fontFamily: 'var(--font-sans)', color: 'var(--text-primary)' }}>Müşteri Hizmetleri</h4>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13px', color: 'var(--text-secondary)', fontFamily: 'var(--font-sans)' }}>
+              <li><a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>Sipariş Takibi</a></li>
+              <li><a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>Teslimat & Kargo</a></li>
+              <li><a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>İade & Değişim Koşulları</a></li>
+              <li><a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>Sıkça Sorulan Sorular</a></li>
+              <li><a href="#" style={{ color: 'inherit', textDecoration: 'none' }}>Beden Tablosu & Sihirbazı</a></li>
             </ul>
           </div>
 
-          {/* Newsletter Box */}
-          <div>
-            <h4 style={{ fontSize: '12px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '1.5px', marginBottom: '20px', fontFamily: 'var(--font-sans)', color: 'var(--text-primary)' }}>
-              Ekibe Katıl
-            </h4>
-            <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '18px', fontFamily: 'var(--font-sans)', lineHeight: '1.6' }}>
+          {/* Newsletter Form */}
+          <div style={{ flex: '1 1 320px', maxWidth: '440px' }}>
+            <h4 style={{ fontSize: '13px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '12px', fontFamily: 'var(--font-sans)', color: 'var(--text-primary)' }}>E-Bülten Abonesi Olun</h4>
+            <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '16px', lineHeight: '1.5', fontFamily: 'var(--font-sans)' }}>
               Kampanyalardan ve yeni çıkan özel serilerden ilk siz haberdar olun!
             </p>
             
             {isSubscribed ? (
-              <div className="badge" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '12px', fontSize: '12px', borderRadius: '0px', backgroundColor: 'var(--primary-light)', color: 'var(--text-primary)', border: '1px solid rgba(24, 24, 27, 0.08)', fontFamily: 'var(--font-sans)' }}>
-                <svg style={{ width: '16px', height: '16px', fill: 'none', stroke: 'var(--success)', strokeWidth: '1.4' }} viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+              <div className="badge" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '12px', fontSize: '12px', borderRadius: '4px', backgroundColor: 'var(--primary-light)', color: 'var(--text-primary)', border: '1px solid rgba(24, 24, 27, 0.08)', fontFamily: 'var(--font-sans)' }}>
+                <Icon name="check" size="small" color="var(--success)" />
                 <span>Başarıyla abone oldunuz! Teşekkürler.</span>
               </div>
             ) : (
-              <form onSubmit={handleSubscribe} style={{ display: 'flex', gap: '0px', width: '100%' }}>
+              <form 
+                onSubmit={handleSubscribe} 
+                style={{ 
+                  display: 'flex', 
+                  alignItems: 'stretch',
+                  gap: '8px', 
+                  width: '100%',
+                  maxWidth: '440px'
+                }}
+              >
                 <input
                   type="email"
                   placeholder="E-posta adresiniz..."
-                  className="input-field"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   style={{
-                    borderRadius: '0px',
-                    fontSize: '12px',
-                    padding: '12px 16px',
-                    backgroundColor: '#fff',
-                    border: '1px solid rgba(24, 24, 27, 0.15)',
-                    borderRight: 'none',
-                    flexGrow: 1,
+                    flex: '1 1 280px',
+                    minWidth: '240px',
+                    height: '46px',
+                    borderRadius: '4px',
+                    fontSize: '13px',
+                    padding: '0 18px',
+                    backgroundColor: '#ffffff',
+                    border: 'none',
+                    boxShadow: 'none',
                     outline: 'none',
-                    transition: 'all var(--transition-fast)',
-                    fontFamily: 'var(--font-sans)'
+                    fontFamily: 'var(--font-sans)',
+                    color: 'var(--text-primary)',
+                    boxSizing: 'border-box'
                   }}
-                  onFocus={(e) => e.target.style.borderColor = 'var(--text-primary)'}
-                  onBlur={(e) => e.target.style.borderColor = 'rgba(24, 24, 27, 0.15)'}
                 />
                 <button
                   type="submit"
-                  className="btn btn-accent"
                   style={{
-                    padding: '12px 24px',
+                    height: '46px',
+                    padding: '0 24px',
                     fontSize: '11px',
-                    borderRadius: '0px',
+                    borderRadius: '4px',
                     textTransform: 'uppercase',
                     letterSpacing: '1px',
-                    fontWeight: '600'
+                    fontWeight: '600',
+                    backgroundColor: '#28282d',
+                    color: '#ffffff',
+                    border: 'none',
+                    boxShadow: 'none',
+                    cursor: 'pointer',
+                    outline: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px',
+                    boxSizing: 'border-box',
+                    transition: 'all 0.2s ease'
                   }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#18181b'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#28282d'}
                 >
-                  Katıl
+                  <span>Katıl</span>
+                  <Icon name="arrow-right" size="small" color="#ffffff" />
                 </button>
               </form>
             )}
@@ -191,17 +202,11 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} NewLilla. Tüm hakları saklıdır. Bu bir Antigravity premium redesign tasarımıdır.</p>
           <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-              <svg style={{ width: '14px', height: '14px', fill: 'none', stroke: 'currentColor', strokeWidth: '1.4' }} viewBox="0 0 24 24">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                <path d="M7 11V7a5 5 0 0110 0v4" />
-              </svg>
+              <Icon name="lock" size="small" />
               <span>Güvenli Alışveriş Altyapısı</span>
             </span>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-              <svg style={{ width: '14px', height: '14px', fill: 'none', stroke: 'currentColor', strokeWidth: '1.4' }} viewBox="0 0 24 24">
-                <rect x="3" y="4" width="18" height="16" rx="2" />
-                <path d="M3 10h18" />
-              </svg>
+              <Icon name="ticket" size="small" />
               <span>MasterCard / Visa / Troy</span>
             </span>
           </div>

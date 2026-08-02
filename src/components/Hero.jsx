@@ -1,253 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-
-function OrnateBorderA() {
-  return (
-    <>
-      {/* Absolute-positioned HTML elements for horizontal lines and main background fill */}
-      <div className="button-bg-main" style={{
-        position: 'absolute',
-        top: '3px',
-        bottom: '3px',
-        left: '11px',
-        right: '11px',
-        pointerEvents: 'none',
-        zIndex: 0,
-        transition: 'background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
-      }} />
-      <div className="button-line-horizontal" style={{
-        position: 'absolute',
-        top: '3px',
-        left: '16px',
-        right: '16px',
-        height: '1px',
-        pointerEvents: 'none',
-        zIndex: 2,
-        transition: 'background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
-      }} />
-      <div className="button-line-horizontal" style={{
-        position: 'absolute',
-        bottom: '3px',
-        left: '16px',
-        right: '16px',
-        height: '1px',
-        pointerEvents: 'none',
-        zIndex: 2,
-        transition: 'background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
-      }} />
-
-      <svg 
-        className="button-border-overlay"
-        width="100%" 
-        height="100%" 
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          pointerEvents: 'none',
-          overflow: 'visible',
-          zIndex: 1
-        }}
-      >
-        <g className="button-border-inner">
-          {/* Left margin body */}
-          <rect 
-            x="3.0" 
-            y="11" 
-            width="8.0" 
-            height="28" 
-            className="button-bg-rect"
-            style={{
-              transition: 'fill 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
-            }}
-          />
-          {/* Right margin body */}
-          <svg x="100%" y="0" width="16" height="50" style={{ overflow: 'visible' }}>
-            <rect 
-              x="-11.0" 
-              y="11" 
-              width="8.0" 
-              height="28" 
-              className="button-bg-rect"
-              style={{
-                transition: 'fill 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
-              }}
-            />
-          </svg>
-
-          {/* Top-Left Corner */}
-          <svg x="0" y="0" width="16" height="16" viewBox="0 0 16 16" className="corner-tl" style={{ overflow: 'visible', transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-            <path 
-              d="M 3.5 11 A 7.5 7.5 0 0 0 11 3.5 L 11 11 Z" 
-              className="button-bg-rect"
-              style={{ transition: 'fill 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}
-            />
-            <path d="M 3.5 11 A 7.5 7.5 0 0 0 11 3.5" fill="none" stroke="currentColor" strokeWidth="1" />
-            <path d="M 16 3.5 L 11 3.5 C 9 3.5, 8 1.5, 9 1 C 10 0.5, 11.5 1.5, 11 2.5 C 10.5 3.5, 9.5 2.5, 10 2" fill="none" stroke="currentColor" strokeWidth="1" />
-            <path d="M 3.5 16 L 3.5 11 C 3.5 9, 1.5 8, 1 9 C 0.5 10, 1.5 11.5, 2.5 11 C 3.5 10.5, 2.5 9.5, 2 10" fill="none" stroke="currentColor" strokeWidth="1" />
-          </svg>
-
-          {/* Top-Right Corner */}
-          <svg x="100%" y="0" width="16" height="16" viewBox="0 0 16 16" className="corner-tr" style={{ overflow: 'visible', transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-            <g transform="translate(-16, 0)">
-              <path 
-                d="M 12.5 11 A 7.5 7.5 0 0 1 5 3.5 L 5 11 Z" 
-                className="button-bg-rect"
-                style={{ transition: 'fill 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}
-              />
-              <path d="M 12.5 11 A 7.5 7.5 0 0 1 5 3.5" fill="none" stroke="currentColor" strokeWidth="1" />
-              <path d="M 0 3.5 L 5 3.5 C 7 3.5, 8 1.5, 7 1 C 6 0.5, 4.5 1.5, 5 2.5 C 5.5 3.5, 6.5 2.5, 6 2" fill="none" stroke="currentColor" strokeWidth="1" />
-              <path d="M 12.5 16 L 12.5 11 C 12.5 9, 14.5 8, 15 9 C 15.5 10, 14.5 11.5, 13.5 11 C 12.5 10.5, 13.5 9.5, 14 10" fill="none" stroke="currentColor" strokeWidth="1" />
-            </g>
-          </svg>
-
-          {/* Bottom-Left Corner */}
-          <svg x="0" y="100%" width="16" height="16" viewBox="0 0 16 16" className="corner-bl" style={{ overflow: 'visible', transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-            <g transform="translate(0, -16)">
-              <path 
-                d="M 3.5 5 A 7.5 7.5 0 0 1 11 12.5 L 11 5 Z" 
-                className="button-bg-rect"
-                style={{ transition: 'fill 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}
-              />
-              <path d="M 3.5 5 A 7.5 7.5 0 0 1 11 12.5" fill="none" stroke="currentColor" strokeWidth="1" />
-              <path d="M 16 12.5 L 11 12.5 C 9 12.5, 8 14.5, 9 15 C 10 15.5, 11.5 14.5, 11 13.5 C 10.5 12.5, 9.5 13.5, 10 13" fill="none" stroke="currentColor" strokeWidth="1" />
-              <path d="M 3.5 0 L 3.5 5 C 3.5 7, 1.5 8, 1 7 C 0.5 6, 1.5 4.5, 2.5 5 C 3.5 5.5, 2.5 6.5, 2 6" fill="none" stroke="currentColor" strokeWidth="1" />
-            </g>
-          </svg>
-
-          {/* Bottom-Right Corner */}
-          <svg x="100%" y="100%" width="16" height="16" viewBox="0 0 16 16" className="corner-br" style={{ overflow: 'visible', transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-            <g transform="translate(-16, -16)">
-              <path 
-                d="M 12.5 5 A 7.5 7.5 0 0 0 5 12.5 L 5 5 Z" 
-                className="button-bg-rect"
-                style={{ transition: 'fill 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}
-              />
-              <path d="M 12.5 5 A 7.5 7.5 0 0 0 5 12.5" fill="none" stroke="currentColor" strokeWidth="1" />
-              <path d="M 0 12.5 L 5 12.5 C 7 12.5, 8 14.5, 7 15 C 6 15.5, 4.5 14.5, 5 13.5 C 5.5 12.5, 6.5 13.5, 6 13" fill="none" stroke="currentColor" strokeWidth="1" />
-              <path d="M 12.5 0 L 12.5 5 C 12.5 7, 14.5 8, 15 7 C 15.5 6, 14.5 4.5, 13.5 5 C 12.5 5.5, 13.5 6.5, 14 6" fill="none" stroke="currentColor" strokeWidth="1" />
-            </g>
-          </svg>
-
-          {/* Left Line */}
-          <line x1="3.5" y1="16" x2="3.5" y2="34" stroke="currentColor" strokeWidth="1" fill="none" />
-          {/* Right Line */}
-          <svg x="100%" y="0" width="16" height="50" style={{ overflow: 'visible' }}>
-            <line 
-              x1="-3.5" 
-              y1="16" 
-              x2="-3.5" 
-              y2="34" 
-              stroke="currentColor" 
-              strokeWidth="1" 
-              fill="none" 
-            />
-          </svg>
-        </g>
-      </svg>
-    </>
-  );
-}
-
-function OrnateBorderB() {
-  return (
-    <>
-      {/* Absolute-positioned HTML elements for horizontal lines and main background fill */}
-      <div className="button-bg-main" style={{
-        position: 'absolute',
-        top: '3px',
-        bottom: '3px',
-        left: '3px',
-        right: '3px',
-        borderRadius: '3px',
-        pointerEvents: 'none',
-        zIndex: 0,
-        transition: 'background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
-      }} />
-      <div className="button-line-horizontal" style={{
-        position: 'absolute',
-        top: '3px',
-        left: '16px',
-        right: '16px',
-        height: '1px',
-        pointerEvents: 'none',
-        zIndex: 2,
-        transition: 'background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
-      }} />
-      <div className="button-line-horizontal" style={{
-        position: 'absolute',
-        bottom: '3px',
-        left: '16px',
-        right: '16px',
-        height: '1px',
-        pointerEvents: 'none',
-        zIndex: 2,
-        transition: 'background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1)'
-      }} />
-
-      <svg 
-        className="button-border-overlay"
-        width="100%" 
-        height="100%" 
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          pointerEvents: 'none',
-          overflow: 'visible',
-          zIndex: 1
-        }}
-      >
-        <g className="button-border-inner">
-          {/* Top-Left Corner */}
-          <svg x="0" y="0" width="16" height="16" viewBox="0 0 16 16" className="corner-tl" style={{ overflow: 'visible', transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-            <path d="M 16 3.5 L 5 3.5 C 3 3.5, 2 2, 3.5 1 C 5 0, 6.5 1.5, 5.5 2.5 C 4.5 3.5, 3.5 2.5, 4 2" fill="none" stroke="currentColor" strokeWidth="1" />
-            <path d="M 3.5 16 L 3.5 5 C 3.5 3, 2 2, 1 3.5 C 0 5, 1.5 6.5, 2.5 5.5 C 3.5 4.5, 2.5 3.5, 2 4" fill="none" stroke="currentColor" strokeWidth="1" />
-          </svg>
-
-          {/* Top-Right Corner */}
-          <svg x="100%" y="0" width="16" height="16" viewBox="0 0 16 16" className="corner-tr" style={{ overflow: 'visible', transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-            <g transform="translate(-16, 0)">
-              <path d="M 0 3.5 L 11 3.5 C 13 3.5, 14 2, 12.5 1 C 11 0, 9.5 1.5, 10.5 2.5 C 11.5 3.5, 12.5 2.5, 12 2" fill="none" stroke="currentColor" strokeWidth="1" />
-              <path d="M 12.5 16 L 12.5 5 C 12.5 3, 14 2, 15 3.5 C 16 5, 14.5 6.5, 13.5 5.5 C 12.5 4.5, 13.5 3.5, 13 4" fill="none" stroke="currentColor" strokeWidth="1" />
-            </g>
-          </svg>
-
-          {/* Bottom-Left Corner */}
-          <svg x="0" y="100%" width="16" height="16" viewBox="0 0 16 16" className="corner-bl" style={{ overflow: 'visible', transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-            <g transform="translate(0, -16)">
-              <path d="M 16 12.5 L 5 12.5 C 3 12.5, 2 14, 3.5 15 C 5 16, 6.5 14.5, 5.5 13.5 C 4.5 12.5, 3.5 13.5, 4 13" fill="none" stroke="currentColor" strokeWidth="1" />
-              <path d="M 3.5 0 L 3.5 11 C 3.5 13, 2 14, 1 12.5 C 0 11, 1.5 9.5, 2.5 10.5 C 3.5 11.5, 2.5 12.5, 2 12" fill="none" stroke="currentColor" strokeWidth="1" />
-            </g>
-          </svg>
-
-          {/* Bottom-Right Corner */}
-          <svg x="100%" y="100%" width="16" height="16" viewBox="0 0 16 16" className="corner-br" style={{ overflow: 'visible', transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}>
-            <g transform="translate(-16, -16)">
-              <path d="M 0 12.5 L 11 12.5 C 13 12.5, 14 14, 12.5 15 C 11 16, 9.5 14.5, 10.5 13.5 C 11.5 12.5, 12.5 13.5, 12 13" fill="none" stroke="currentColor" strokeWidth="1" />
-              <path d="M 12.5 0 L 12.5 11 C 12.5 13, 14.5 14, 15 12.5 C 16 11, 14.5 9.5, 13.5 10.5 C 12.5 11.5, 13.5 12.5, 13 12" fill="none" stroke="currentColor" strokeWidth="1" />
-            </g>
-          </svg>
-
-          {/* Left Line */}
-          <line x1="3.5" y1="16" x2="3.5" y2="34" stroke="currentColor" strokeWidth="1" fill="none" />
-          {/* Right Line */}
-          <svg x="100%" y="0" width="16" height="50" style={{ overflow: 'visible' }}>
-            <line 
-              x1="-3.5" 
-              y1="16" 
-              x2="-3.5" 
-              y2="34" 
-              stroke="currentColor" 
-              strokeWidth="1" 
-              fill="none" 
-            />
-          </svg>
-        </g>
-      </svg>
-    </>
-  );
-}
+import { OrnateButton, Icon } from './ui';
 
 export default function Hero({ setActiveCategory }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -519,10 +272,7 @@ export default function Hero({ setActiveCategory }) {
                         className="plain-rect-btn"
                       >
                         <span style={{ position: 'relative', zIndex: 1 }}>{slide.buttonText}</span>
-                        <svg className="cta-arrow" style={{ position: 'relative', zIndex: 1 }} width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                          <line x1="1" y1="5" x2="13" y2="5" />
-                          <polyline points="9 1 13 5 9 9" />
-                        </svg>
+                        <Icon name="arrow-right" size="small" className="cta-arrow" style={{ position: 'relative', zIndex: 1 }} />
                       </button>
                     </div>
                   </div>
@@ -737,47 +487,19 @@ export default function Hero({ setActiveCategory }) {
                     )}
 
                     <div className="hero-text-animate" style={{ display: 'flex', marginBottom: '8px', padding: '4px' }}>
-                      {slide.template === 'A' ? (
-                        <button
-                          onClick={() => {
-                            const target = document.getElementById(slide.buttonText.includes('Paket') ? 'bundle-builder-section' : 'catalog-section');
-                            if (target) {
-                              target.scrollIntoView({ behavior: 'smooth' });
-                            } else {
-                              document.getElementById('catalog-section')?.scrollIntoView({ behavior: 'smooth' });
-                            }
-                          }}
-                          className="ornate-cta-btn"
-                        >
-                          <OrnateBorderA id={slide.id} />
-
-                          <span style={{ position: 'relative', zIndex: 1 }}>{slide.buttonText}</span>
-                          <svg className="cta-arrow" style={{ position: 'relative', zIndex: 1 }} width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                            <line x1="1" y1="5" x2="13" y2="5" />
-                            <polyline points="9 1 13 5 9 9" />
-                          </svg>
-                        </button>
-                      ) : (
-                        <button
-                          onClick={() => {
-                            const target = document.getElementById(slide.buttonText.includes('Paket') ? 'bundle-builder-section' : 'catalog-section');
-                            if (target) {
-                              target.scrollIntoView({ behavior: 'smooth' });
-                            } else {
-                              document.getElementById('catalog-section')?.scrollIntoView({ behavior: 'smooth' });
-                            }
-                          }}
-                          className="ornate-scroll-btn"
-                        >
-                          <OrnateBorderB id={slide.id} />
-
-                          <span style={{ position: 'relative', zIndex: 1 }}>{slide.buttonText}</span>
-                          <svg className="cta-arrow" style={{ position: 'relative', zIndex: 1 }} width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                            <line x1="1" y1="5" x2="13" y2="5" />
-                            <polyline points="9 1 13 5 9 9" />
-                          </svg>
-                        </button>
-                      )}
+                      <OrnateButton
+                        variant={slide.template === 'A' ? 'ornate-a' : 'ornate-b'}
+                        onClick={() => {
+                          const target = document.getElementById(slide.buttonText.includes('Paket') ? 'bundle-builder-section' : 'catalog-section');
+                          if (target) {
+                            target.scrollIntoView({ behavior: 'smooth' });
+                          } else {
+                            document.getElementById('catalog-section')?.scrollIntoView({ behavior: 'smooth' });
+                          }
+                        }}
+                      >
+                        {slide.buttonText}
+                      </OrnateButton>
                     </div>
                   </div>
                 </div>

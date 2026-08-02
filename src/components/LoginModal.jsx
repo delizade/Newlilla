@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Icon } from './ui';
 
 export default function LoginModal({ isOpen, onClose, onLoginSuccess }) {
   const [activeTab, setActiveTab] = useState('login'); // 'login' or 'register'
@@ -20,133 +21,62 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }) {
       return;
     }
 
-    if (activeTab === 'login') {
-      // Simulate successful login
-      setSuccessMsg('Başarıyla giriş yapıldı! Yönlendiriliyorsunuz...');
+    if (activeTab === 'register') {
+      const newUser = { name, email, promoCode: 'LILLA10' };
+      localStorage.setItem('newlilla_user', JSON.stringify(newUser));
+      setSuccessMsg('Hesabınız başarıyla oluşturuldu! Hoş geldiniz.');
       setTimeout(() => {
-        onLoginSuccess({
-          name: email.split('@')[0].toUpperCase(),
-          email: email
-        });
-        setSuccessMsg('');
-        setEmail('');
-        setPassword('');
+        onLoginSuccess(newUser);
         onClose();
-      }, 1500);
+      }, 1200);
     } else {
-      // Simulate successful registration
-      setSuccessMsg('Hesabınız başarıyla oluşturuldu! Giriş yapılıyor...');
+      const user = { name: email.split('@')[0], email, promoCode: 'LILLA10' };
+      localStorage.setItem('newlilla_user', JSON.stringify(user));
+      setSuccessMsg('Giriş başarılı! Yönlendiriliyorsunuz...');
       setTimeout(() => {
-        onLoginSuccess({
-          name: name,
-          email: email
-        });
-        setSuccessMsg('');
-        setName('');
-        setEmail('');
-        setPassword('');
+        onLoginSuccess(user);
         onClose();
-      }, 1500);
+      }, 1000);
     }
   };
 
   return (
-    <div
-      onClick={onClose}
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100vw',
-        height: '100vh',
-        backgroundColor: 'rgba(15, 12, 20, 0.65)',
-        zIndex: 2100,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        animation: 'fadeIn 0.25s ease-out'
-      }}
-    >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="liquid-glass anim-scale-in"
+    <div className="login-modal-overlay liquid-glass-dark" style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      zIndex: 1000,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '20px'
+    }}>
+      <div 
+        className="login-modal-container"
         style={{
-          width: '90%',
+          width: '100%',
           maxWidth: '440px',
+          backgroundColor: '#fff',
           borderRadius: '0px',
-          boxShadow: 'var(--shadow-lg)',
-          border: '1px solid rgba(24, 24, 27, 0.08)',
-          overflow: 'hidden',
-          display: 'flex',
-          flexDirection: 'column',
+          boxShadow: '0 24px 60px rgba(0,0,0,0.18)',
           position: 'relative',
-          backdropFilter: 'none',
-          WebkitBackdropFilter: 'none'
+          overflow: 'hidden',
+          animation: 'fadeInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
         }}
       >
-        {/* Header Tabs */}
-        <div style={{
-          display: 'flex',
-          borderBottom: '1px solid rgba(24, 24, 27, 0.05)',
-          backgroundColor: 'rgba(253, 252, 249, 0.4)'
-        }}>
-          <button
-            onClick={() => { setActiveTab('login'); setErrorMsg(''); }}
-            style={{
-              flex: 1,
-              padding: '18px 0',
-              background: activeTab === 'login' ? 'rgba(253, 252, 249, 0.95)' : 'transparent',
-              border: 'none',
-              borderBottom: activeTab === 'login' ? '2px solid var(--accent)' : 'none',
-              fontSize: '13px',
-              fontWeight: '600',
-              fontFamily: 'var(--font-sans)',
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-              color: activeTab === 'login' ? 'var(--text-primary)' : 'var(--text-secondary)',
-              cursor: 'pointer',
-              transition: 'all var(--transition-fast)',
-              outline: 'none'
-            }}
-          >
-            Giriş Yap
-          </button>
-          <button
-            onClick={() => { setActiveTab('register'); setErrorMsg(''); }}
-            style={{
-              flex: 1,
-              padding: '18px 0',
-              background: activeTab === 'register' ? 'rgba(253, 252, 249, 0.95)' : 'transparent',
-              border: 'none',
-              borderBottom: activeTab === 'register' ? '2px solid var(--accent)' : 'none',
-              fontSize: '13px',
-              fontWeight: '600',
-              fontFamily: 'var(--font-sans)',
-              letterSpacing: '1px',
-              textTransform: 'uppercase',
-              color: activeTab === 'register' ? 'var(--text-primary)' : 'var(--text-secondary)',
-              cursor: 'pointer',
-              transition: 'all var(--transition-fast)',
-              outline: 'none'
-            }}
-          >
-            Kayıt Ol
-          </button>
-        </div>
-
-        {/* Modal Close Button */}
+        {/* Close button */}
         <button
           onClick={onClose}
           style={{
             position: 'absolute',
-            top: '16px',
-            right: '16px',
+            top: '20px',
+            right: '20px',
             background: 'none',
             border: 'none',
             cursor: 'pointer',
             color: 'var(--text-secondary)',
-            transition: 'all var(--transition-fast)',
-            zIndex: 10,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -162,9 +92,7 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }) {
             e.currentTarget.style.backgroundColor = 'transparent';
           }}
         >
-          <svg style={{ width: '16px', height: '16px', fill: 'none', stroke: 'currentColor', strokeWidth: '1.4' }} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <Icon name="close" size="small" />
         </button>
 
         {/* Form Container */}
@@ -192,9 +120,7 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }) {
               alignItems: 'center',
               gap: '8px'
             }}>
-              <svg style={{ width: '16px', height: '16px', fill: 'none', stroke: 'currentColor', strokeWidth: '1.4', flexShrink: 0 }} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
+              <Icon name="check" size="small" color="var(--success)" />
               <span>{successMsg}</span>
             </div>
           )}
@@ -211,121 +137,116 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }) {
               alignItems: 'center',
               gap: '8px'
             }}>
-              <svg style={{ width: '16px', height: '16px', fill: 'none', stroke: 'currentColor', strokeWidth: '1.4', flexShrink: 0 }} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-              </svg>
+              <Icon name="info" size="small" color="#d32f2f" />
               <span>{errorMsg}</span>
             </div>
           )}
 
-          {/* Name Field (Register Only) */}
+          {/* Register Name input */}
           {activeTab === 'register' && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              <label style={{ fontSize: '10px', fontWeight: '600', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                Adınız Soyadınız
+            <div>
+              <label style={{ fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-primary)', display: 'block', marginBottom: '6px' }}>
+                Adınız & Soyadınız
               </label>
               <input
                 type="text"
-                placeholder="Ör. Aylin Yılmaz"
-                className="input-field"
+                placeholder="Ör. Selin Yılmaz"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 style={{
-                  fontSize: '13px',
+                  width: '100%',
+                  padding: '12px 14px',
                   borderRadius: '0px',
-                  backgroundColor: 'rgba(253, 252, 249, 0.6)',
-                  border: '1px solid rgba(24, 24, 27, 0.12)',
-                  transition: 'all var(--transition-fast)'
+                  border: '1px solid rgba(24, 24, 27, 0.15)',
+                  fontSize: '13px',
+                  outline: 'none',
+                  transition: 'all 0.2s ease'
                 }}
-                onFocus={(e) => {
-                  e.target.style.borderColor = 'var(--text-primary)';
-                  e.target.style.backgroundColor = 'rgba(253, 252, 249, 0.9)';
-                }}
-                onBlur={(e) => {
-                  e.target.style.borderColor = 'rgba(24, 24, 27, 0.12)';
-                  e.target.style.backgroundColor = 'rgba(253, 252, 249, 0.6)';
-                }}
+                onFocus={(e) => e.target.style.borderColor = 'var(--text-primary)'}
+                onBlur={(e) => e.target.style.borderColor = 'rgba(24, 24, 27, 0.15)'}
               />
             </div>
           )}
 
-          {/* Email Field */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-            <label style={{ fontSize: '10px', fontWeight: '600', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px' }}>
-              E-posta Adresi
+          {/* Email input */}
+          <div>
+            <label style={{ fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-primary)', display: 'block', marginBottom: '6px' }}>
+              E-Posta Adresi
             </label>
             <input
               type="email"
-              placeholder="Ornek@email.com"
-              className="input-field"
+              placeholder="selin@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               style={{
-                fontSize: '13px',
+                width: '100%',
+                padding: '12px 14px',
                 borderRadius: '0px',
-                backgroundColor: 'rgba(253, 252, 249, 0.6)',
-                border: '1px solid rgba(24, 24, 27, 0.12)',
-                transition: 'all var(--transition-fast)'
+                border: '1px solid rgba(24, 24, 27, 0.15)',
+                fontSize: '13px',
+                outline: 'none',
+                transition: 'all 0.2s ease'
               }}
-              onFocus={(e) => {
-                e.target.style.borderColor = 'var(--text-primary)';
-                e.target.style.backgroundColor = 'rgba(253, 252, 249, 0.9)';
-              }}
-              onBlur={(e) => {
-                e.target.style.borderColor = 'rgba(24, 24, 27, 0.12)';
-                e.target.style.backgroundColor = 'rgba(253, 252, 249, 0.6)';
-              }}
+              onFocus={(e) => e.target.style.borderColor = 'var(--text-primary)'}
+              onBlur={(e) => e.target.style.borderColor = 'rgba(24, 24, 27, 0.15)'}
             />
           </div>
 
-          {/* Password Field */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <label style={{ fontSize: '10px', fontWeight: '600', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '1px' }}>
+          {/* Password input */}
+          <div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+              <label style={{ fontSize: '11px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-primary)' }}>
                 Şifre
               </label>
               {activeTab === 'login' && (
-                <a href="#forgot" style={{ fontSize: '11px', color: 'var(--accent)', textDecoration: 'none', fontWeight: '500' }}>
-                  Şifremi Unuttum
-                </a>
+                <span 
+                  onClick={() => alert("Şifre sıfırlama bağlantısı e-postanıza gönderildi.")}
+                  style={{ fontSize: '11px', color: 'var(--text-secondary)', cursor: 'pointer', textDecoration: 'underline' }}
+                >
+                  Şifremi Unuttum?
+                </span>
               )}
             </div>
             <input
               type="password"
               placeholder="••••••••"
-              className="input-field"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               style={{
-                fontSize: '13px',
+                width: '100%',
+                padding: '12px 14px',
                 borderRadius: '0px',
-                backgroundColor: 'rgba(253, 252, 249, 0.6)',
-                border: '1px solid rgba(24, 24, 27, 0.12)',
-                transition: 'all var(--transition-fast)'
+                border: '1px solid rgba(24, 24, 27, 0.15)',
+                fontSize: '13px',
+                outline: 'none',
+                transition: 'all 0.2s ease'
               }}
-              onFocus={(e) => {
-                e.target.style.borderColor = 'var(--text-primary)';
-                e.target.style.backgroundColor = 'rgba(253, 252, 249, 0.9)';
-              }}
-              onBlur={(e) => {
-                e.target.style.borderColor = 'rgba(24, 24, 27, 0.12)';
-                e.target.style.backgroundColor = 'rgba(253, 252, 249, 0.6)';
-              }}
+              onFocus={(e) => e.target.style.borderColor = 'var(--text-primary)'}
+              onBlur={(e) => e.target.style.borderColor = 'rgba(24, 24, 27, 0.15)'}
             />
           </div>
 
-          {/* Remember Me Checkbox (Login Only) */}
-          {activeTab === 'login' && (
-            <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: 'var(--text-secondary)', cursor: 'pointer', userSelect: 'none' }}>
-              <input type="checkbox" style={{ accentColor: 'var(--accent)', width: '14px', height: '14px', cursor: 'pointer' }} />
-              <span>Beni Hatırla</span>
-            </label>
+          {/* Special Membership Promo Callout */}
+          {activeTab === 'register' && (
+            <div style={{
+              padding: '10px 14px',
+              backgroundColor: 'var(--primary-light)',
+              borderRadius: '0px',
+              fontSize: '11px',
+              color: 'var(--text-primary)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
+            }}>
+              <Icon name="ticket" size="small" />
+              <span>Kayıt olduğunuzda <b>LILLA10</b> %10 sepet indirimi otomatik tanımlanır.</span>
+            </div>
           )}
 
           {/* Submit Button */}
           <button
             type="submit"
-            className="btn btn-accent"
+            className="btn btn-primary"
             style={{
               width: '100%',
               padding: '14px 0',
@@ -342,9 +263,7 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }) {
             }}
           >
             <span>{activeTab === 'login' ? 'Giriş Yap' : 'Kayıt Ol & Üye Ol'}</span>
-            <svg style={{ width: '14px', height: '14px', fill: 'none', stroke: 'currentColor', strokeWidth: '1.4' }} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
+            <Icon name="arrow-right" size="small" />
           </button>
 
           {/* Tab Switch prompt */}
@@ -361,7 +280,7 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess }) {
               </span>
             ) : (
               <span>
-                Zaten üye misiniz?{' '}
+                Zaten hesabınız var mı?{' '}
                 <span
                   onClick={() => { setActiveTab('login'); setErrorMsg(''); }}
                   style={{ color: 'var(--accent)', cursor: 'pointer', fontWeight: '600' }}

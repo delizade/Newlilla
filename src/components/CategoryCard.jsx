@@ -1,4 +1,5 @@
 import React from 'react';
+import { Icon } from './ui';
 
 export default function CategoryCard({ title, image, onClick }) {
   return (
@@ -23,20 +24,7 @@ export default function CategoryCard({ title, image, onClick }) {
 
       {/* Interactive Action Button */}
       <button className="tactile-action-btn" aria-label={`${title} kategorisini keşfet`}>
-        <svg 
-          width="14" 
-          height="10" 
-          viewBox="0 0 14 10" 
-          fill="none" 
-          stroke="#212121" 
-          strokeWidth="1.4" 
-          strokeLinecap="round" 
-          strokeLinejoin="round"
-          className="tactile-btn-arrow"
-        >
-          <line x1="1" y1="5" x2="13" y2="5" />
-          <polyline points="9 1 13 5 9 9" />
-        </svg>
+        <Icon name="arrow-right" size={14} color="#212121" className="tactile-btn-arrow" />
       </button>
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Icon, Tag } from './ui';
 
 // Helper to prevent ragged lines / orphan words wrapping alone
 const formatProductNameForTitle = (name) => {
@@ -44,43 +45,14 @@ export default function ProductCard({ product, onAddToCart, onQuickView, onAddTo
         gap: '6px',
         alignItems: 'flex-start'
       }}>
-        <span
-          className="badge badge-primary"
-          style={{
-          backgroundColor: 'var(--bg-primary)',
-          border: '1px solid var(--border-color)',
-            fontSize: '10px',
-            color: 'var(--text-primary)',
-            padding: '4px 10px',
-            letterSpacing: '0.05em',
-            textTransform: 'uppercase',
-            fontFamily: 'var(--font-sans)',
-            fontWeight: '600'
-          }}
-        >
+        <Tag variant="glass" size="md">
           {product.subCategory}
-        </span>
+        </Tag>
         
         {isRecommended && (
-          <span className="lilla-badge" style={{ 
-            animation: 'shimmer-gold 3s linear infinite',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '4px',
-            fontFamily: 'var(--font-sans)',
-            fontWeight: '600',
-            fontSize: '10px',
-            letterSpacing: '0.02em',
-            padding: '4px 8px',
-            backgroundColor: 'rgba(24, 24, 27, 0.9)',
-            color: '#fff',
-            borderRadius: '2px'
-          }}>
-            <svg style={{ width: '10px', height: '10px', fill: 'var(--gold)' }} viewBox="0 0 24 24">
-              <path d="M12 2l2.4 7.2h7.6l-6.2 4.5 2.4 7.3-6.2-4.5-6.2 4.5 2.4-7.3-6.2-4.5h7.6z" />
-            </svg>
+          <Tag variant="primary" size="md" icon="star">
             Önerilen Kesim
-          </span>
+          </Tag>
         )}
       </div>
 
@@ -93,6 +65,7 @@ export default function ProductCard({ product, onAddToCart, onQuickView, onAddTo
           paddingBottom: '125%', /* Premium 4:5 fashion editorial aspect ratio */
           backgroundColor: 'var(--bg-secondary)',
           overflow: 'hidden',
+          borderRadius: '4px',
           border: '1px solid var(--border-naive)',
           transition: 'border-color var(--transition-normal)',
           cursor: 'pointer'
@@ -171,10 +144,7 @@ export default function ProductCard({ product, onAddToCart, onQuickView, onAddTo
               }}
               title="Hızlı Bakış"
             >
-              <svg style={{ width: '14px', height: '14px', fill: 'none', stroke: 'currentColor', strokeWidth: 1.4 }} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
+              <Icon name="eye" size={14} />
             </button>
           </div>
 
@@ -202,9 +172,7 @@ export default function ProductCard({ product, onAddToCart, onQuickView, onAddTo
                 gap: '6px'
               }}
             >
-              <svg style={{ width: '12px', height: '12px', fill: 'currentColor' }} viewBox="0 0 24 24">
-                <path d="M12 2l2.4 7.2h7.6l-6.2 4.5 2.4 7.3-6.2-4.5-6.2 4.5 2.4-7.3-6.2-4.5h7.6z" />
-              </svg>
+              <Icon name="star" size={12} color="currentColor" filled />
               Pakete Ekle (Mix & Match)
             </button>
           )}
@@ -255,10 +223,7 @@ export default function ProductCard({ product, onAddToCart, onQuickView, onAddTo
                 padding: '4px'
               }}
             >
-              <svg style={{ width: '12px', height: '12px', stroke: 'currentColor', strokeWidth: 1.4 }} viewBox="0 0 24 24">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
+              <Icon name="close" size="small" />
             </button>
           </div>
           
@@ -336,9 +301,7 @@ export default function ProductCard({ product, onAddToCart, onQuickView, onAddTo
             alignItems: 'center',
             gap: '4px'
           }}>
-            <svg style={{ width: '10px', height: '10px', fill: 'var(--gold)' }} viewBox="0 0 24 24">
-              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-            </svg>
+            <Icon name="star" size="small" filled color="var(--gold)" />
             <span style={{ fontSize: '10px', fontWeight: '600', color: 'var(--text-primary)', fontFamily: 'var(--font-sans)' }}>
               {product.rating}
             </span>
@@ -379,7 +342,7 @@ export default function ProductCard({ product, onAddToCart, onQuickView, onAddTo
               style={{
                 width: '10px',
                 height: '10px',
-                borderRadius: '50%',
+                borderRadius: '4px',
                 background: color.code,
                 border: '1px solid rgba(24, 24, 27, 0.15)',
                 display: 'inline-block'
@@ -418,13 +381,13 @@ export default function ProductCard({ product, onAddToCart, onQuickView, onAddTo
               border: 'none',
               fontSize: '11px',
               color: 'var(--accent)',
-              fontWeight: '600',
+              fontWeight: '500',
               cursor: 'pointer',
               transition: 'all var(--transition-fast)',
               padding: '4px 8px',
               textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-              fontFamily: 'var(--font-sans)'
+              letterSpacing: '2.5px',
+              fontFamily: 'var(--font-serif)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.color = 'var(--text-primary)';
